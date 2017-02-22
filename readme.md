@@ -9,7 +9,7 @@ $ npm start
 ## Endpoints
 ### `GET /persons/#id`
 
-Allows you to access a person by their id in couchDB
+Allows you to access a person by their id 
 
 Example call:
 ```
@@ -39,7 +39,7 @@ Example error:
 
 ### `POST /persons`
 
-Allows you to add people to couchDB database
+Allows you to add a person
 
 Example call:
 ```
@@ -84,7 +84,7 @@ Example error (if POST does not contain id):
 
 ### `DELETE /persons/:id`
 
-Allows you to delete people by id in couchDB
+Allows you to delete people by id 
 
 Example call:
 ```
@@ -111,7 +111,7 @@ Example error (if ':id' doesn't match database):
 
 ### `PUT /persons/:id`
 
-Allows you to update users, requires CURRENT rev to updatePerson
+Allows you to update users, requires **current** rev to updatePerson
 
 Example call:
 ```
@@ -136,7 +136,7 @@ Example response:
   "rev": "3-4a04c41fdb016cbcb3f5e888ade0cd21"
 }
 ```
-Example error (if rev is not supplied):
+Example error (if **rev** is not supplied):
 ```
 {
   "name": "conflict",
