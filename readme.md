@@ -57,7 +57,7 @@ Example response:
 ```
 {
   "ok": true,
-  "id": "person_tristan_grooms_dmxgrooms@gmail.com",
+  "id": "person_tristan_grooms_dmxgroom@gmail.com",
   "rev": "1-7e2681579221cf88dd6b4625ebad8604"
 }
 ```
@@ -125,7 +125,6 @@ Example PUT:
   "firstName": "George",
   "lastName": "Apostolov",
   "email": "g.aposto@gmail.com",
-  "type": "person"
 }
 ```
 Example response:
