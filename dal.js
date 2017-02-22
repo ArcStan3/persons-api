@@ -19,6 +19,15 @@ function addPerson (person, cb) {
   })
 }
 
+function updatePerson (doc, cb) {
+  db.put(doc, function (err, res) {
+    if (err) return cb(err)
+    //no need to return below, return is implicit
+    cb(null, res)
+  })
+}
+
+
 function deletePerson (id, cb) {
   db.get(id, function (err, doc) {
     if (err) return cb(err)
@@ -32,7 +41,8 @@ function deletePerson (id, cb) {
 const dal = {
   getPerson: getPerson,
   addPerson: addPerson,
-  deletePerson: deletePerson
+  deletePerson: deletePerson,
+  updatePerson: updatePerson
 }
 
 module.exports = dal

@@ -72,3 +72,27 @@ Example response:
   "rev": "4-7539397ec3e96842298de04658a6d757"
 }
 ```
+
+### `PUT /persons/:id`
+
+Allows you to update users, requires CURRENT rev to updatePerson
+
+Example call:
+```
+{
+  "_id": "person_george_apostolov_g.aposto@gmail.com",
+  "_rev": "2-521eccef9a3261cbbdb0df4751c8b5a7",
+  "firstName": "George",
+  "lastName": "Apostolov",
+  "email": "g.aposto@gmail.com",
+  "type": "person"
+}
+```
+Example response:
+```
+{
+  "ok": true,
+  "id": "person_george_apostolov_g.aposto@gmail.com",
+  "rev": "3-4a04c41fdb016cbcb3f5e888ade0cd21"
+}
+```
