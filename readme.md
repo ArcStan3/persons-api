@@ -154,4 +154,4 @@ Example error (if **rev** is not supplied):
 }
 ```
 
-##Endpoints for addresses
+##Endpoints for Addresses
