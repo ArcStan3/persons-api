@@ -2,6 +2,7 @@ const PouchDB = require('pouchdb-http')
 const db = new PouchDB('http://localhost:3000/test')
 const { map, omit, compose, prop } = require('ramda')
 
+//Persons
 function getPersons (cb) {
   db.allDocs({ include_docs: true,
         start_key: "person_",
@@ -48,6 +49,26 @@ function deletePerson (id, cb) {
   })
 })
 }
+
+//Addresses
+function addPerson (person, cb) {
+  if (prop('firstName', person) && prop('lastName', person) && prop('email', person)) {
+  person._id = `person_${person.firstName.toLowerCase()}_${person.lastName.toLowerCase()}_${person.email.toLowerCase()}`
+  person.type = "person"
+  db.put(person, function (err, res) {
+    if (err) return cb(err)
+    cb(null, res)
+  })} else {return cb({"error": "please enter a firstName, lastName, and email"})}
+} 
+
+
+function addAddress (address, cb) {
+  db.put(address, function (err, res) {
+    if (err) return cb(err)
+    cb(null, res)
+  })
+}
+  
 
 const dal = {
   getPerson: getPerson,

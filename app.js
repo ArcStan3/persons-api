@@ -8,7 +8,7 @@ const HTTPError = require('node-http-error')
 
 app.use(bodyParser.json())
 
-
+//Persons
 app.post('/persons', function (req, res, next) {
   console.log(req.body)
   dal.addPerson(req.body, function (err, dalResponse) {
@@ -45,6 +45,8 @@ app.get('/persons', function (req, res, next) {
     res.send(resp)
   })
 })
+
+//Addresses
 
 app.listen(port, function() {
   console.log("I'm listening on port: ", port)

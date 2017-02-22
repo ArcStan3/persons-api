@@ -6,7 +6,7 @@ $ npm install
 $ npm start
 ```
 
-## Endpoints
+## Endpoints for Persons
 ### `GET /persons`
 Outputs all persons in the database
 
@@ -80,13 +80,13 @@ Example of POST in database (id and type are added, as well as rev):
   "type": "person"
 }
 ```
-Example error (if POST does not contain id):
+Example error (if POST does not contain either firstName, lastName, or email):
 ```
 {
-  "name": "missing_id",
-  "status": 412,
-  "message": "_id is required for puts",
-  "error": true
+  "name": "HTTPError",
+  "status": 500,
+  "message": "",
+  "error": "please enter a firstName, lastName, and email"
 }
 ```
 
@@ -153,3 +153,5 @@ Example error (if **rev** is not supplied):
   "error": "conflict"
 }
 ```
+
+##Endpoints for addresses
