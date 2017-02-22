@@ -5,45 +5,34 @@ const { map, omit, compose } = require('ramda')
 function getPerson (id, cb) {
   db.get(id, function (err, res) {
     if (err) return cb(err)
+    //no need to return below, return is implicit
     cb(null, res)
   })
 }
 
-//todo add template to include
-/*
-const personToAdd = {
-  "_id": "person_tristan_grooms_dmxgrooms@gmail.com",
-  "firstName": "Tristan",
-  "lastName": "Grooms",
-  "email": "dmxgroom@gmail.com"
-}
-*/
-
-function addPerson (newPerson, cb) {
-  db.put(newPerson, function (err, res) {
+function addPerson (person, cb) {
+  db.put(person, function (err, res) {
+    res.type = "person"
     if (err) return cb(err)
+    //no need to return below, return is implicit
     cb(null, res)
   })
 }
 
-function getPersons (cb) {
-  db.get(function (err, res) {
+function deletePerson (id, cb) {
+  db.get(id, function (err, doc) {
     if (err) return cb(err)
-    return cb(null, res)
+    db.remove(doc, function (err, removedDoc) {
+    if (err) return cb(null, err)
+    cb(null, removedDoc)
   })
+})
 }
-
-/*
-console.log(getPerson("person_kevin_porter_kevyp@gmail.com", function (err, res) {
-  if (err) console.log (err)
-  console.log(res)
-}))
-*/
 
 const dal = {
   getPerson: getPerson,
-  getPersons: getPersons,
-  addPerson: addPerson
+  addPerson: addPerson,
+  deletePerson: deletePerson
 }
 
 module.exports = dal

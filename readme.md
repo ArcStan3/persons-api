@@ -54,3 +54,21 @@ Example Response:
   "id": "person_tristan_grooms_dmxgrooms@gmail.com",
   "rev": "1-7e2681579221cf88dd6b4625ebad8604"
 }
+```
+
+### `DELETE /persons/:id`
+
+Allows you to delete people by id in couchDB
+
+Example call:
+```
+DELETE /persons/person_kevin_porter_kevyp@gmail.com
+```
+Example response:
+```
+{
+  "ok": true,
+  "id": "person_stanley_cruse_s.cruse@gmail.com",
+  "rev": "4-7539397ec3e96842298de04658a6d757"
+}
+```
