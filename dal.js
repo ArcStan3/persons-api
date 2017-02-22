@@ -9,8 +9,28 @@ function getPerson (id, cb) {
   })
 }
 
+//todo add template to include
+/*
+const personToAdd = {
+  "_id": "person_james_eady_deliriousarab@gmail.com"
+  "firstName": "James",
+  "lastName": "Eady",
+  "email": "deliriousarab@gmail.com"
+}
+*/
+
+function addPerson (newPerson, cb) {
+  db.put(newPerson, function (err, res) {
+    if (err) return cb(err)
+    cb(null, res)
+  })
+}
+
 function getPersons (cb) {
-  db.
+  db.get(function (err, res) {
+    if (err) return cb(err)
+    return cb(null, res)
+  })
 }
 
 /*
@@ -23,6 +43,7 @@ console.log(getPerson("person_kevin_porter_kevyp@gmail.com", function (err, res)
 const dal = {
   getPerson: getPerson,
   getPersons: getPersons,
+  addPerson: addPerson
 }
 
 module.exports = dal

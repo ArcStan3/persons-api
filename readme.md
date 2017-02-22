@@ -30,4 +30,20 @@ Example Response:
 }
 ```
 
-### `GET /persons`
+### `POST /persons`
+
+Allows you to add people to couchDB database
+
+Example call:
+```
+POST /persons
+```
+Example Response:
+```
+{
+  "_id": "person_james_eady_deliriousarab@gmail.com",
+  "_rev": "1-6ff7731dfbed6011c952c84add0bccbf",
+  "firstName": "James",
+  "lastName": "Eady",
+  "email": "deliriousarab@gmail.com"
+}
