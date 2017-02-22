@@ -12,7 +12,6 @@ function getPerson (id, cb) {
 
 function addPerson (person, cb) {
   db.put(person, function (err, res) {
-    res.type = "person"
     if (err) return cb(err)
     //no need to return below, return is implicit
     cb(null, res)
@@ -26,7 +25,6 @@ function updatePerson (doc, cb) {
     cb(null, res)
   })
 }
-
 
 function deletePerson (id, cb) {
   db.get(id, function (err, doc) {

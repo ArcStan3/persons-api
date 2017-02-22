@@ -10,9 +10,7 @@ $ npm start
 ## Endpoints
 ### `GET /persons/#id`
 
-Provide a description
-
-List of route parameters and definition
+Allows you to access a person by their id in couchDB
 
 Example call:
 ```

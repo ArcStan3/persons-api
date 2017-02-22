@@ -10,7 +10,6 @@ app.use(bodyParser.json())
 
 
 app.post('/persons', function (req, res, next) {
-  //test to see if we have hooked up our bodyparser correctly
   console.log(req.body)
   dal.addPerson(req.body, function (err, dalResponse) {
     if (err) return next(new HTTPError(err.status, err.message, err))
