@@ -3,8 +3,7 @@
 $ git clone https://github.com/ArcStan3/persons-api.git
 $ cd persons-api
 $ npm install
-$ npm start
-
+$ npm start 
 ```
 
 ## Endpoints
@@ -16,7 +15,7 @@ Example call:
 ```
 GET /persons/person_kevin_porter_kevyp@gmail.com
 ```
-Example Response:
+Example response:
 ```
 {
   "_id": "person_kevin_porter_kevyp@gmail.com",
@@ -25,6 +24,16 @@ Example Response:
   "lastName": "Porter",
   "email": "kevyp@gmail.com",
   "type": "person"
+} 
+```
+Example error:
+```
+{
+  "name": "not_found",
+  "status": 404,
+  "message": "missing",
+  "reason": "missing",
+  "error": "not_found"
 }
 ```
 
@@ -45,12 +54,21 @@ Example POST:
   "email": "dmxgroom@gmail.com"
 }
 ```
-Example Response:
+Example response:
 ```
 {
   "ok": true,
   "id": "person_tristan_grooms_dmxgrooms@gmail.com",
   "rev": "1-7e2681579221cf88dd6b4625ebad8604"
+}
+```
+Example error (if POST does not contain id):
+```
+{
+  "name": "missing_id",
+  "status": 412,
+  "message": "_id is required for puts",
+  "error": true
 }
 ```
 
@@ -70,12 +88,26 @@ Example response:
   "rev": "4-7539397ec3e96842298de04658a6d757"
 }
 ```
+Example error (if ':id' doesn't match database): 
+```
+{
+  "name": "not_found",
+  "status": 404,
+  "message": "missing",
+  "reason": "missing",
+  "error": "not_found"
+}
+```
 
 ### `PUT /persons/:id`
 
 Allows you to update users, requires CURRENT rev to updatePerson
 
 Example call:
+```
+PUT  /persons/person_george_apostolov_g.aposto@gmail.com
+```
+Example PUT: 
 ```
 {
   "_id": "person_george_apostolov_g.aposto@gmail.com",
@@ -92,5 +124,15 @@ Example response:
   "ok": true,
   "id": "person_george_apostolov_g.aposto@gmail.com",
   "rev": "3-4a04c41fdb016cbcb3f5e888ade0cd21"
+}
+```
+Example error (if rev is not supplied):
+```
+{
+  "name": "conflict",
+  "status": 409,
+  "message": "Document update conflict.",
+  "reason": "Document update conflict.",
+  "error": "conflict"
 }
 ```
