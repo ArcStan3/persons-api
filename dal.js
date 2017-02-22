@@ -1,6 +1,15 @@
 const PouchDB = require('pouchdb-http')
 const db = new PouchDB('http://localhost:3000/test')
-const { map, omit, compose } = require('ramda')
+const { map, omit, compose, prop } = require('ramda')
+
+function getPersons (cb) {
+  db.allDocs({ include_docs: true,
+        start_key: "person_",
+        end_key: "person_\uffff"}, function (err, res) {
+    if (err) return cb(err)
+    cb(null, map(x => x.doc, res.rows))
+  })
+}
 
 function getPerson (id, cb) {
   db.get(id, function (err, res) {
@@ -11,17 +20,19 @@ function getPerson (id, cb) {
 }
 
 function addPerson (person, cb) {
+  if (prop('firstName', person) && prop('lastName', person) && prop('email', person)) {
   person._id = `person_${person.firstName.toLowerCase()}_${person.lastName.toLowerCase()}_${person.email.toLowerCase()}`
   person.type = "person"
   db.put(person, function (err, res) {
     if (err) return cb(err)
-    //no need to return below, return is implicit
     cb(null, res)
-  })
-}
+  })} else {return cb({"error": "please enter a firstName, lastName, and email"})}
+} 
 
-function updatePerson (doc, cb) {
-  db.put(doc, function (err, res) {
+
+function updatePerson (person, cb) {
+  person.type = "person"
+  db.put(person, function (err, res) {
     if (err) return cb(err)
     //no need to return below, return is implicit
     cb(null, res)
@@ -42,7 +53,8 @@ const dal = {
   getPerson: getPerson,
   addPerson: addPerson,
   deletePerson: deletePerson,
-  updatePerson: updatePerson
+  updatePerson: updatePerson,
+  getPersons: getPersons
 }
 
 module.exports = dal

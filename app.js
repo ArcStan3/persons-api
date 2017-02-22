@@ -39,6 +39,13 @@ app.get('/persons/:id', function (req, res, next) {
   })
 })
 
+app.get('/persons', function (req, res, next) {
+  dal.getPersons(function (err, resp) {
+    if (err) return next(new HTTPError(err.status, err.message, err))
+    res.send(resp)
+  })
+})
+
 app.listen(port, function() {
   console.log("I'm listening on port: ", port)
 })

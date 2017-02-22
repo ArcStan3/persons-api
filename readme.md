@@ -7,6 +7,14 @@ $ npm start
 ```
 
 ## Endpoints
+### `GET /persons`
+Outputs all persons in the database
+
+Example call:
+```
+GET /persons
+```
+
 ### `GET /persons/#id`
 
 Allows you to access a person by their id 
