@@ -11,6 +11,8 @@ function getPerson (id, cb) {
 }
 
 function addPerson (person, cb) {
+  person._id = `person_${person.firstName.toLowerCase()}_${person.lastName.toLowerCase()}_${person.email.toLowerCase()}`
+  person.type = "person"
   db.put(person, function (err, res) {
     if (err) return cb(err)
     //no need to return below, return is implicit

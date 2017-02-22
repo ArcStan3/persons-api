@@ -3,7 +3,7 @@
 $ git clone https://github.com/ArcStan3/persons-api.git
 $ cd persons-api
 $ npm install
-$ npm start 
+$ npm start
 ```
 
 ## Endpoints
@@ -48,7 +48,6 @@ POST /persons
 Example POST:
 ```
 {
-  "_id": "person_tristan_grooms_dmxgrooms@gmail.com",
   "firstName": "Tristan",
   "lastName": "Grooms",
   "email": "dmxgroom@gmail.com"
@@ -60,6 +59,17 @@ Example response:
   "ok": true,
   "id": "person_tristan_grooms_dmxgrooms@gmail.com",
   "rev": "1-7e2681579221cf88dd6b4625ebad8604"
+}
+```
+Example of POST in database (id and type are added, as well as rev):
+```
+{
+  "_id": "person_tristan_grooms_dmxgroom@gmail.com",
+  "_rev": "1-c1340ca706a2c71576a89cbda22dfdfc",
+  "firstName": "Tristan",
+  "lastName": "Grooms",
+  "email": "dmxgroom@gmail.com",
+  "type": "person"
 }
 ```
 Example error (if POST does not contain id):
