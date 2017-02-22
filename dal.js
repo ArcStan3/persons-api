@@ -12,10 +12,10 @@ function getPerson (id, cb) {
 //todo add template to include
 /*
 const personToAdd = {
-  "_id": "person_james_eady_deliriousarab@gmail.com"
-  "firstName": "James",
-  "lastName": "Eady",
-  "email": "deliriousarab@gmail.com"
+  "_id": "person_tristan_grooms_dmxgrooms@gmail.com",
+  "firstName": "Tristan",
+  "lastName": "Grooms",
+  "email": "dmxgroom@gmail.com"
 }
 */
 

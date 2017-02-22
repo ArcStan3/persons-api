@@ -38,12 +38,19 @@ Example call:
 ```
 POST /persons
 ```
+Example POST:
+```
+{
+  "_id": "person_tristan_grooms_dmxgrooms@gmail.com",
+  "firstName": "Tristan",
+  "lastName": "Grooms",
+  "email": "dmxgroom@gmail.com"
+}
+```
 Example Response:
 ```
 {
-  "_id": "person_james_eady_deliriousarab@gmail.com",
-  "_rev": "1-6ff7731dfbed6011c952c84add0bccbf",
-  "firstName": "James",
-  "lastName": "Eady",
-  "email": "deliriousarab@gmail.com"
+  "ok": true,
+  "id": "person_tristan_grooms_dmxgrooms@gmail.com",
+  "rev": "1-7e2681579221cf88dd6b4625ebad8604"
 }
