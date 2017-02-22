@@ -1,6 +1,6 @@
-## Steps
+## Gitting started 
 ```
-$ git clone <some github url>
+$ git clone https://github.com/ArcStan3/persons-api.git
 $ cd persons-api
 $ npm install
 $ npm start
