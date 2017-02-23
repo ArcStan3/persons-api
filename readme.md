@@ -8,7 +8,7 @@ $ npm start
 
 ## Endpoints for Persons
 ### `GET /persons`
-Outputs all persons in the database
+Returns all persons in the database
 
 Example call:
 ```
@@ -16,7 +16,6 @@ GET /persons
 ```
 
 ### `GET /persons/#id`
-
 Allows you to access a person by their id 
 
 Example call:
@@ -46,7 +45,6 @@ Example error:
 ```
 
 ### `POST /persons`
-
 Allows you to add a person
 
 Example call:
@@ -91,7 +89,6 @@ Example error (if POST does not contain either firstName, lastName, or email):
 ```
 
 ### `DELETE /persons/:id`
-
 Allows you to delete people by id 
 
 Example call:
@@ -118,7 +115,6 @@ Example error (if ':id' doesn't match database):
 ```
 
 ### `PUT /persons/:id`
-
 Allows you to update users, requires **current** rev to updatePerson
 
 Example call:
@@ -155,3 +151,32 @@ Example error (if **rev** is not supplied):
 ```
 
 ##Endpoints for Addresses
+### `GET /addresses`
+Returns all addresses in the database
+
+Example call: 
+```
+`GET /addresses`
+```
+### `POST /addresses`\
+Allows you to add an address to the database
+
+Example call: 
+```
+{
+  "_id": "address_lars_hellberger_l.hellberger@gmail.com_143_lancer_dr",
+  "person_id": "person_lars_hellberger_l.hellberger@gmail.com",
+  "address_type": "home",
+  "street": "143 Lancer Dr",
+  "city": "Summerville",
+  "state": "SC",
+  "zip": "29485"
+}
+```
+Example response: 
+```
+{
+  "ok": true,
+  "id": "address_lars_hellberger_l.hellberger@gmail.com_143_lancer_dr",
+  "rev": "1-5bccfd5a54079f1f6502a7147c5d1404"
+}
