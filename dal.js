@@ -11,7 +11,7 @@ function getPersons (cb) {
         start_key: "person_",
         end_key: "person_\uffff"}, function (err, res) {
     if (err) return cb(err)
-    cb(null, map(x => x.doc, res.rows))
+    cb(null, (map(obj => omit("type", obj.doc), res.rows)))
   })
 }
 
@@ -69,7 +69,7 @@ function getAddresses (cb) {
         start_key: "address_",
         end_key: "address_\uffff"}, function (err, res) {
     if (err) return (err)
-    cb(null, map(x => x.doc, res.rows))
+    cb(null, (map(obj => omit("type", obj.doc), res.rows)))
   })
 }
 
