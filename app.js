@@ -17,10 +17,18 @@ app.post('/persons', function (req, res, next) {
   })
 })
 
+app.post('/addresses', function (req, res, next) {
+  console.log(req.body)
+  dal.addAddress(req.body, function (err, dalResponse) {
+    if (err) return next(new HTTPError(err.status, err.message, err))
+    res.send(dalResponse) 
+  })
+})
+
 app.put('/persons/:id', function (req, res, next) {
   console.log(req.body)
   dal.updatePerson(req.body, function (err, dalResponse) {
-    if (err) return next(new HTTPError(err.status, err.messge, err))
+    if (err) return next(new HTTPError(err.status, err.messsge, err))
     res.send(dalResponse)
   })
 })

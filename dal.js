@@ -69,22 +69,6 @@ function addAddress (address, cb) {
   })
 }
 
-const anAddress = {
-  "_id": "address_lars_hellberger_l.hellberger@gmail.com_143_lancer_dr",
-  "person_id": "person_lars_hellberger_l.hellberger@gmail.com",
-  "type": "address",
-  "address_type": "home",
-  "street": "143 Lancer Dr",
-  "city": "Summerville",
-  "state": "SC",
-  "zip": "29485"
-}
-
-addAddress(anAddress, function (err, res) {
-  if (err) return console.log (err)
-  console.log(res)
-})
-  
 
 const dal = {
   getPerson: getPerson,
