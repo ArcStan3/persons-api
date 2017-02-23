@@ -44,7 +44,7 @@ function deletePerson (id, cb) {
   db.get(id, function (err, doc) {
     if (err) return cb(err)
     db.remove(doc, function (err, removedDoc) {
-    if (err) return cb(null, err)
+    if (err) return cb(err)
     cb(null, removedDoc)
   })
 })
@@ -82,6 +82,32 @@ function updateAddress (addresses, cb) {
   })
 }
 
+const myAddress = {
+  "_id": "address_stanley_cruse_s.cruse@gmail.com_218_germander_ave",
+  "_rev": "1-b1a284a96250e5471b2813867824fa99",
+  "person_id": "person_stanley_cruse_s.cruse@gmail.com",
+  "type": "address",
+  "address_type": "home",
+  "street": "218 Germander Ave",
+  "city": "Summerville",
+  "state": "SC",
+  "zip": "29483"
+}
+
+function deleteAddress (address, cb) {
+  db.get(address, function (err, res) {
+    if (err) return cb(err) 
+    db.remove(res, function (err, removedAddress) {
+    if (err) return cb(err)
+    cb(null, removedAddress)
+  })
+})
+}
+
+deleteAddress("address_stanley_cruse_s.cruse@gmail.com_218_germander_ave", function (err, res) {
+  if (err) return console.log(err)
+  console.log(res)
+})
 
 const dal = {
   getPerson: getPerson,
@@ -92,7 +118,8 @@ const dal = {
   addAddress: addAddress,
   getAddresses: getAddresses,
   getAddress: getAddress,
-  updateAddress: updateAddress
+  updateAddress: updateAddress,
+  deleteAddress: deleteAddress
 }
 
 module.exports = dal
