@@ -51,18 +51,18 @@ function deletePerson (id, cb) {
 }
 
 //Addresses
-function addPerson (person, cb) {
-  if (prop('firstName', person) && prop('lastName', person) && prop('email', person)) {
-  person._id = `person_${person.firstName.toLowerCase()}_${person.lastName.toLowerCase()}_${person.email.toLowerCase()}`
-  person.type = "person"
-  db.put(person, function (err, res) {
-    if (err) return cb(err)
-    cb(null, res)
-  })} else {return cb({"error": "please enter a firstName, lastName, and email"})}
-} 
 
+function getAddresses (cb) {
+  db.allDocs({ include_docs: true, 
+        start_key: "address_",
+        end_key: "address_\uffff"}, function (err, res) {
+    if (err) return (err)
+    cb(null, map(x => x.doc, res.rows))
+  })
+}
 
 function addAddress (address, cb) {
+  address.type = "address"
   db.put(address, function (err, res) {
     if (err) return cb(err)
     cb(null, res)
