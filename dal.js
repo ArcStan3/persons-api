@@ -68,6 +68,12 @@ function addAddress (address, cb) {
   })
 }
 
+function getAddress (id, cb) {
+  db.get(id, function (err, res) {
+    if (err) return cb(err)
+    cb(null, res)
+  })
+}
 
 const dal = {
   getPerson: getPerson,
@@ -76,7 +82,8 @@ const dal = {
   updatePerson: updatePerson,
   getPersons: getPersons,
   addAddress: addAddress,
-  getAddresses: getAddresses
+  getAddresses: getAddresses,
+  getAddress: getAddress
 }
 
 module.exports = dal
