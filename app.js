@@ -65,7 +65,7 @@ app.post('/addresses', function (req, res, next) {
 
 app.put('/addresses/:id', function (req, res, next) {
   console.log(req.body) 
-  dal.updatePerson(req.body), function (err, dalResponse) {
+  dal.updatePerson(req.body, function (err, dalResponse) {
     if (err) return next(new HTTPError(err.status, err.message, err)) 
     res.send(dalResponse)
   })
