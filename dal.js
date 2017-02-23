@@ -75,6 +75,14 @@ function getAddress (id, cb) {
   })
 }
 
+function updateAddress (addresses, cb) {
+  db.put(address, function (err, res) {
+    if (err) return cb(err)
+    cb(null, res)
+  })
+}
+
+
 const dal = {
   getPerson: getPerson,
   addPerson: addPerson,
@@ -83,7 +91,8 @@ const dal = {
   getPersons: getPersons,
   addAddress: addAddress,
   getAddresses: getAddresses,
-  getAddress: getAddress
+  getAddress: getAddress,
+  updateAddress: updateAddress
 }
 
 module.exports = dal
