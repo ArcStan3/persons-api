@@ -89,7 +89,7 @@ Example error (if POST does not contain either firstName, lastName, or email):
 ```
 
 ### `DELETE /persons/:id`
-Allows you to delete people by id 
+Remove a person by id 
 
 Example call:
 ```
@@ -232,5 +232,20 @@ Example response:
   "ok": true,
   "id": "address_kent_berry_ohwow@gmail.com_543_boomkin_dr",
   "rev": "3-4deba997bbca864143714103fcb17c1e"
+}
+```
+### `DELETE /addresses/:id`
+Remove an address from the database 
+
+Example call: 
+```
+DELETE /addresses/address_stanley_cruse_s.cruse@gmail.com_218_germander_ave
+```
+Example response:
+```
+{
+  "ok": true,
+  "id": "address_stanley_cruse_s.cruse@gmail.com_218_germander_ave",
+  "rev": "8-de97997899d1265672ce8a393d1230c9"
 }
 ```
