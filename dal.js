@@ -2,7 +2,10 @@ const PouchDB = require('pouchdb-http')
 const db = new PouchDB('http://localhost:3000/test')
 const { map, omit, compose, prop } = require('ramda')
 
-//Persons
+
+
+////////////////Persons//////////////////////
+
 function getPersons (cb) {
   db.allDocs({ include_docs: true,
         start_key: "person_",
@@ -12,13 +15,14 @@ function getPersons (cb) {
   })
 }
 
+
 function getPerson (id, cb) {
   db.get(id, function (err, res) {
     if (err) return cb(err)
-    //no need to return below, return is implicit
     cb(null, res)
   })
 }
+
 
 function addPerson (person, cb) {
   if (prop('firstName', person) && prop('lastName', person) && prop('email', person)) {
@@ -40,6 +44,7 @@ function updatePerson (person, cb) {
   })
 }
 
+
 function deletePerson (id, cb) {
   db.get(id, function (err, doc) {
     if (err) return cb(err)
@@ -50,7 +55,15 @@ function deletePerson (id, cb) {
 })
 }
 
-//Addresses
+
+
+
+
+
+
+
+/////////////////Addresses/////////////////////
+
 function getAddresses (cb) {
   db.allDocs({ include_docs: true, 
         start_key: "address_",
@@ -60,6 +73,7 @@ function getAddresses (cb) {
   })
 }
 
+
 function addAddress (address, cb) {
   address.type = "address"
   db.put(address, function (err, res) {
@@ -68,6 +82,7 @@ function addAddress (address, cb) {
   })
 }
 
+
 function getAddress (id, cb) {
   db.get(id, function (err, res) {
     if (err) return cb(err)
@@ -75,24 +90,15 @@ function getAddress (id, cb) {
   })
 }
 
-function updateAddress (addresses, cb) {
+
+function updateAddress (address, cb) {
+  if (prop('_rev', address)) {
   db.put(address, function (err, res) {
     if (err) return cb(err)
     cb(null, res)
-  })
+  })} else {return cb({"error": "please enter the current '_rev' for the address you wish to update"})}
 }
 
-const myAddress = {
-  "_id": "address_stanley_cruse_s.cruse@gmail.com_218_germander_ave",
-  "_rev": "1-b1a284a96250e5471b2813867824fa99",
-  "person_id": "person_stanley_cruse_s.cruse@gmail.com",
-  "type": "address",
-  "address_type": "home",
-  "street": "218 Germander Ave",
-  "city": "Summerville",
-  "state": "SC",
-  "zip": "29483"
-}
 
 function deleteAddress (address, cb) {
   db.get(address, function (err, res) {
@@ -104,10 +110,8 @@ function deleteAddress (address, cb) {
 })
 }
 
-deleteAddress("address_stanley_cruse_s.cruse@gmail.com_218_germander_ave", function (err, res) {
-  if (err) return console.log(err)
-  console.log(res)
-})
+
+
 
 const dal = {
   getPerson: getPerson,
