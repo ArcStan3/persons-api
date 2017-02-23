@@ -70,6 +70,13 @@ app.get('/addresses', function (req, res, next) {
   })
 })
 
+app.get('/addresses/:id', function (req, res, next) {
+  dal.getAddress(req.params.id, function (err, dalResponse) {
+    if (err) return next(new HTTPError(err.status, err.message, err))
+    res.send(dalResponse)
+  })
+})
+
 
 app.listen(port, function() {
   console.log("I'm listening on port: ", port)
