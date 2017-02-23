@@ -115,7 +115,7 @@ Example error (if ':id' doesn't match database):
 ```
 
 ### `PUT /persons/:id`
-Allows you to update users, requires **current** rev to updatePerson
+Allows you to update users, requires **current** rev to update person
 
 Example call:
 ```
@@ -203,4 +203,34 @@ Example response:
   "id": "address_lars_hellberger_l.hellberger@gmail.com_143_lancer_dr",
   "rev": "1-5bccfd5a54079f1f6502a7147c5d1404"
 }
+```
 
+### `PUT /addresses/:id`
+Allows you to update a user's address, requires **current** rev to update address
+
+Example call:
+```
+`PUT /addresses/address_kent_berry_ohwow@gmail.com_543_boomkin_dr`
+```
+Example PUT (changed zip from "30301" to "30305"): 
+```
+{
+  "_id": "address_kent_berry_ohwow@gmail.com_543_boomkin_dr",
+  "_rev": "2-354b7f4206a455d5d35969af4eea98ce",
+  "person_id": "person_lars_hellberger_l.hellberger@gmail.com",
+  "type": "address",
+  "address_type": "home",
+  "street": "543 boomkin Dr",
+  "city": "Atlanta",
+  "state": "GA",
+  "zip": "30305"
+}
+```
+Example response: 
+```
+{
+  "ok": true,
+  "id": "address_kent_berry_ohwow@gmail.com_543_boomkin_dr",
+  "rev": "3-4deba997bbca864143714103fcb17c1e"
+}
+```
