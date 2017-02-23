@@ -85,6 +85,12 @@ app.get('/addresses/:id', function (req, res, next) {
   })
 })
 
+app.delete('/addresses/:id', function (req, res, next) {
+  dal.deletePerson(req.params.id, function (err, dalResponse) {
+    if (err) return next(new HTTPError(err.status, err.message, err))
+    res.send(dalResponse) 
+  })
+})
 
 app.listen(port, function() {
   console.log("I'm listening on port: ", port)
