@@ -51,7 +51,6 @@ function deletePerson (id, cb) {
 }
 
 //Addresses
-
 function getAddresses (cb) {
   db.allDocs({ include_docs: true, 
         start_key: "address_",
@@ -76,7 +75,8 @@ const dal = {
   deletePerson: deletePerson,
   updatePerson: updatePerson,
   getPersons: getPersons,
-  addAddress: addAddress
+  addAddress: addAddress,
+  getAddresses: getAddresses
 }
 
 module.exports = dal

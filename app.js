@@ -55,6 +55,21 @@ app.get('/persons', function (req, res, next) {
 })
 
 //Addresses
+app.post('/addresses', function (req, res, next) {
+  console.log(req.body)
+  dal.addAddress(req.body, function (err, dalResponse) {
+    if (err) return next(new HTTPError(err.status, err.message, err))
+    res.send(dalResponse) 
+  })
+})
+
+app.get('/addresses', function (req, res, next) {
+  dal.getAddresses(function (err, dalResponse) {
+    if (err) return next(new HTTPError(err.status, err.message, err))
+    res.send(dalResponse)
+  })
+})
+
 
 app.listen(port, function() {
   console.log("I'm listening on port: ", port)
