@@ -6,7 +6,13 @@ $ npm install
 $ npm start
 ```
 
+
+
+
+
 ## Endpoints for Persons
+
+
 ### `GET /persons`
 Returns all persons in the database
 
@@ -14,6 +20,8 @@ Example call:
 ```
 GET /persons
 ```
+
+
 
 ### `GET /persons/#id`
 Allows you to access a person by their id 
@@ -43,6 +51,8 @@ Example error:
   "error": "not_found"
 }
 ```
+
+
 
 ### `POST /persons`
 Allows you to add a person
@@ -88,6 +98,8 @@ Example error (if POST does not contain either firstName, lastName, or email):
 }
 ```
 
+
+
 ### `DELETE /persons/:id`
 Remove a person by id 
 
@@ -113,6 +125,8 @@ Example error (if ':id' doesn't match database):
   "error": "not_found"
 }
 ```
+
+
 
 ### `PUT /persons/:id`
 Allows you to update users, requires **current** rev to update person
@@ -150,7 +164,13 @@ Example error (if **rev** is not supplied):
 }
 ```
 
+
+
+
+
 ##Endpoints for Addresses
+
+
 ### `GET /addresses`
 Returns all addresses in the database
 
@@ -158,6 +178,8 @@ Example call:
 ```
 `GET /addresses`
 ```
+
+
 
 ### `GET /addresses/:id`
 Returns specific address in the database
@@ -180,6 +202,8 @@ Example response:
   "zip": "30301"
 }
 ```
+
+
 
 ### `POST /addresses`\
 Allows you to add an address to the database
@@ -204,6 +228,8 @@ Example response:
   "rev": "1-5bccfd5a54079f1f6502a7147c5d1404"
 }
 ```
+
+
 
 ### `PUT /addresses/:id`
 Allows you to update a user's address, requires **current** rev to update address
@@ -234,6 +260,31 @@ Example response:
   "rev": "3-4deba997bbca864143714103fcb17c1e"
 }
 ```
+Example error (does not contain the current rev): 
+```
+{
+  "_id": "address_lars_hellberger_l.hellberger@gmail.com_143_lancer_dr",
+  "person_id": "person_lars_hellberger_l.hellberger@gmail.com",
+  "type": "address",
+  "address_type": "home",
+  "street": "143 Lancer Dr",
+  "city": "Summerville",
+  "state": "SC",
+  "zip": "29488"
+}
+```
+Example error response: 
+```
+{
+  "name": "HTTPError",
+  "status": 500,
+  "message": "",
+  "error": "please enter the current '_rev' for the address you wish to update"
+}
+```
+
+
+
 ### `DELETE /addresses/:id`
 Remove an address from the database 
 
